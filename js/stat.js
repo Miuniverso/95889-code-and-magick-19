@@ -27,8 +27,8 @@ function foundMaxElement(arr) {
     if (arr[i] > maxElement) {
       maxElement = arr[i];
     }
-    return maxElement;
   }
+  return maxElement;
 }
 
 // генерация прозрачности заливки
