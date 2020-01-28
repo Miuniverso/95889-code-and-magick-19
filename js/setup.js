@@ -45,7 +45,7 @@ var wizards = [
   }
 ];
 
-var wizardTemplate = document.querySelector('#similar-wizard-template');
+var wizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 var wizardsList = document.querySelector('.setup-similar-list');
 
 // генерируем клон из шаблона
@@ -55,6 +55,8 @@ function renderWizard(wizard) {
   wizardClone.querySelector('.setup-similar-label').textContent = wizard.name;
   wizardClone.querySelector('.wizard-coat').style.fill = wizard.coatColor;
   wizardClone.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
+
+  // console.log(wizardClone);
 
   return wizardClone;
 }
