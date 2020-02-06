@@ -149,11 +149,12 @@ coat.addEventListener('click', function () {
 eyes.addEventListener('click', function () {
   var newEyesColor = eyesColors[getRandomInRange(0, eyesColors.length - 1)];
   eyes.style.fill = newEyesColor;
-  eyesInput.value = newEyesColor;
+  eyesInput.setAttribute('value', newEyesColor);
 });
 
 fireball.addEventListener('click', function () {
   var newFireballColor = fireballColors[getRandomInRange(0, fireballColors.length - 1)];
   fireball.style.background = newFireballColor;
-  fireballInput.value = newFireballColor;
+  fireballInput.setAttribute('value', newFireballColor);
+  // fireballInput.value = newFireballColor;
 });
