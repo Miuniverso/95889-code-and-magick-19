@@ -116,17 +116,6 @@ wizardName.addEventListener('click', function () {
   document.removeEventListener('keydown', onPopupEscPress);
 });
 
-wizardName.addEventListener('input', function () {
-  if (wizardName.validity.tooLong) {
-    wizardName.setCustomValidity('Длина имени не должна превышать 25 символов');
-    document.removeEventListener('keydown', onPopupEscPress);
-  }
-  if (wizardName.validity.tooShort) {
-    wizardName.setCustomValidity('Длина имени должна быть не менее 2 символа');
-    document.removeEventListener('keydown', onPopupEscPress);
-  }
-});
-
 setupClose.addEventListener('keydown', function (evt) {
   if (evt.key === ENTER_KEY) {
     closePopup();
@@ -137,64 +126,34 @@ setupButtonSubmit.addEventListener('click', function () {
   wizardForm.submit();
 });
 
-setupButtonSubmit.addEventListener('keydown', function (evt) {
-  if (evt.key === ENTER_KEY) {
-    wizardForm.submit();
-  }
-});
-
-// var coat = document.querySelector('.wizard-coat');
-// var eyes = document.querySelector('.wizard-eyes');
-// var fireball = document.querySelector('.setup-fireball-wrap');
-// var coatInput = document.querySelector('[name="coat-color"]');
-// var eyesInput = document.querySelector('[name="eyes-color"]');
+var coat = document.querySelector('.wizard-coat');
+var eyes = document.querySelector('.wizard-eyes');
+var fireball = document.querySelector('.setup-fireball-wrap');
+var coatInput = document.querySelector('[name="coat-color"]');
+var eyesInput = document.querySelector('[name="eyes-color"]');
 var fireballInput = document.querySelector('[name="fireball-color"]');
 
-// неправильно сделала
-
-var changeableElements = {
-  coat: document.querySelector('.wizard-coat'),
-  eyes: document.querySelector('.wizard-eyes'),
-  fireball: document.querySelector('.setup-fireball-wrap'),
-  randomColor: function (array) {
-    if (this.fireball) {
-      console.log('fireball!');
-      var newFireballColor = array[getRandomInRange(0, array.length - 1)];
-      this.fireball.style.background = newFireballColor;
-      fireballInput.value = newFireballColor;
-    } else {
-      this.style.fill = array[getRandomInRange(0, array.length - 1)];
-    }
-  }
-};
+coat.addEventListener('click', function () {
+  var newCoatColor = coatColors[getRandomInRange(0, coatColors.length - 1)];
+  coatInput.setAttribute('value', newCoatColor);
+  coat.style.fill = newCoatColor;
+});
 
 
-// всё работает, но данные не сохраняются в input
-// как это сделать? В голове innerHTML, но я в сомнениях
+coat.addEventListener('click', function () {
+  var newCoatColor = coatColors[getRandomInRange(0, coatColors.length - 1)];
+  coatInput.setAttribute('value', newCoatColor);
+  coat.style.fill = newCoatColor;
+});
 
-// var randomColor = function (element, array) {
-//   console.log(array[getRandomInRange(0, array.length - 1)]);
-//   element.style.fill = array[getRandomInRange(0, array.length - 1)];
-// };
+eyes.addEventListener('click', function () {
+  var newEyesColor = eyesColors[getRandomInRange(0, eyesColors.length - 1)];
+  eyes.style.fill = newEyesColor;
+  eyesInput.value = newEyesColor;
+});
 
-// coat.addEventListener('click', function () {
-//   var newCoatColor = coatColors[getRandomInRange(0, coatColors.length - 1)];
-//   coat.style.fill = newCoatColor;
-//   coatInput.value = newCoatColor;
-// });
-//
-// eyes.addEventListener('click', function () {
-//   var newEyesColor = eyesColors[getRandomInRange(0, eyesColors.length - 1)];
-//   eyes.style.fill = newEyesColor;
-//   eyesInput.value = newEyesColor;
-// });
-//
-// fireball.addEventListener('click', function () {
-//   var newFireballColor = fireballColors[getRandomInRange(0, fireballColors.length - 1)];
-//   fireball.style.background = newFireballColor;
-//   fireballInput.value = newFireballColor;
-// });
-
-// changeableElements.coat.addEventListener('click', changeableElements.randomColor(coatColors));
-// changeableElements.eyes.addEventListener('click', changeableElements.randomColor(eyesColors));
-changeableElements.fireball.addEventListener('click', changeableElements.randomColor(fireballColors));
+fireball.addEventListener('click', function () {
+  var newFireballColor = fireballColors[getRandomInRange(0, fireballColors.length - 1)];
+  fireball.style.background = newFireballColor;
+  fireballInput.value = newFireballColor;
+});
